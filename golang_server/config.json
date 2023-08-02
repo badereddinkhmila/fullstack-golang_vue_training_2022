@@ -1,0 +1,25 @@
+{   
+    "environment": "development",
+    "db":{
+        "host": "localhost",
+        "port":5432,
+        "database":"estale_ecommerce",
+        "username": "postgres",
+        "password": "root"
+    },
+    "elastic": {
+        "hosts": "127.0.0.1:9200",
+        "username": "estale_ecommerce",
+        "password": "baderbadrouch15"
+    },
+    "app":{
+        "host": "127.0.0.1",
+        "port": "8080",
+        "cors": "http://127.0.0.1:4200"
+    },
+    "jwt": {
+        "accessTokenExpiry": 3600,
+        "accessTokenSecret": "Estale~ècommérce@Webtùtorial$^%Site",
+        "refreshTokenExpiry": 604800
+    }
+}

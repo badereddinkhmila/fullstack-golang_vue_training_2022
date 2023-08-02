@@ -1,0 +1,1 @@
+ALTER TABLE "categories" ADD FOREIGN KEY ("created_by") REFERENCES "app_users" ("id");

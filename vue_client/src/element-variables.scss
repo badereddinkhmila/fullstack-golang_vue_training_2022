@@ -1,0 +1,43 @@
+@use "sass:map";
+/*
+Write your variables here. All available variables can be
+found in element-plus/packages/theme-chalk/src/common/var.scss.
+For example, to overwrite the theme color:
+*/
+$--color-primary: hotpink;
+
+/* icon font path, required */
+$--font-path: "~element-plus/lib/theme-chalk/fonts";
+$colors: () !default;
+$colors: map.deep-merge(
+  (
+    "primary": (
+      "base": #9c4803,
+    ),
+  ),
+  $colors
+);
+
+@import "element-plus/theme-chalk/src/index.scss";
+@import "element-plus/theme-chalk/src/common/var.scss";
+
+.el-scrollbar__view {
+  height: 100%;
+}
+
+.is-available {
+  .el-input__wrapper {
+    box-shadow: 0 0 0 1px var(--el-color-success) inset;
+    .el-input__icon {
+      color: var(--el-color-success);
+    }
+  }
+}
+
+.el-menu-item-group {
+  .el-menu-item-group__title {
+    margin: 0;
+    padding: 0;
+    display: none;
+  }
+}

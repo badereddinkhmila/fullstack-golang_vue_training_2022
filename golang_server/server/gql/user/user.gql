@@ -1,0 +1,57 @@
+###### User Type #####
+type User @goModel(model: "com.fullstack.ecommerce/app/users/model.User"){
+    id:         ID       
+	username:   String!  
+	email:      String!   
+	password:   String!
+    role:       String!
+	created_at: Time!
+}
+
+type LoginResponse @goModel(model:"com.fullstack.ecommerce/app/users/model.LoginResponse"){
+    access_token:  String!
+    refresh_token: String!
+    current_user:  User!
+}
+
+
+#### User Mutations #####
+extend type Mutation {
+    registerCustomer(input:CreateUserInput):User!
+    registerProvider(input:CreateUserInput):User!
+    updateUser(input:UpdateUserInput):User!
+    resetPassword(input:ResetPasswordInput):User!
+    deleteUser(id:Int!):Boolean!
+}
+
+#### User Queries #####
+extend type Query {
+    users:[User!]
+    getUserById(id:Int!):User!
+    loginUser(input:LoginInput!):LoginResponse
+    refreshToken(token:String!):LoginResponse
+    checkUsernameAvailability(username:String!):Boolean
+    checkEmailAvailability(email:String!):Boolean
+}
+
+input CreateUserInput{
+    username: String!
+    email:    String!
+    password: String!
+}
+
+input UpdateUserInput{
+    id: Int!
+    username: String!
+    password: String!
+}
+
+input LoginInput{
+    usernameOrEmail: String!
+    password:        String!
+}
+
+input ResetPasswordInput{
+    oldPassword: String!
+    newPassword: String!
+}

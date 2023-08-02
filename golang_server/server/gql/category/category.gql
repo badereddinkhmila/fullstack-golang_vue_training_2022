@@ -1,0 +1,33 @@
+#### Category Type ####
+type Category @goModel(model: "com.fullstack.ecommerce/app/categories/model.Category") {
+    id:          ID!
+	lable:       String!
+	description: String!
+	created_at:  Time!
+	created_by:  User! @goField(forceResolver: true)
+}
+
+#### Category Mutations #####
+extend type Mutation {
+    createCategory(category: CreateCategoryInput):Category!
+    updateCategory(input: UpdateCategoryInput):Category!
+    deleteCategory(id: Int!):Boolean!
+}
+
+#### Category Queries #####
+extend type Query {
+    categories: [Category!]
+    getCategoryById(id: Int!): Category!
+    checkLableAvailability(lable: String!): Boolean
+}
+
+input CreateCategoryInput {
+    lable:       String!
+    description: String!
+}
+
+input UpdateCategoryInput {
+    id: Int!
+    lable:       String!
+    description: String!
+}

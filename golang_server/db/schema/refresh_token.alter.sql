@@ -1,0 +1,1 @@
+ALTER TABLE "refresh_tokens" ADD FOREIGN KEY ("user_id") REFERENCES "app_users" ("id");

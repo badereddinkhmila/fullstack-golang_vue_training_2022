@@ -1,0 +1,29 @@
+#### Order Type ####
+type Order @goModel(model: "com.fullstack.ecommerce/app/orders/model.Order") {
+    id:         ID!
+	status:     String!
+	created_at: Time!
+	created_by: User! @goField(forceResolver: true)
+}
+
+#### Order Mutations #####
+extend type Mutation {
+    createOrder(Order: CreateOrderInput): Order!
+    updateOrder(input: UpdateOrderInput): Order!
+    deleteOrder(id: Int!): Boolean!
+}
+
+#### Order Queries #####
+extend type Query {
+    orders: [Order!]
+    getOrderById(id: Int!): Order!
+}
+
+input CreateOrderInput {
+    status: String!    
+}
+
+input UpdateOrderInput {
+    lable:       String!
+    description: String!
+}

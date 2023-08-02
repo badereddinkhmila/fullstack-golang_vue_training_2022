@@ -1,0 +1,54 @@
+#### Product Type ####
+type Product @goModel(model:"com.fullstack.ecommerce/app/products/model.Product"){
+    id:                  ID! 
+    name_product:        String!
+    description_product: String!
+    price_product:       Float!
+    quantity_product:    Int!
+    is_available:        Boolean!
+    product_image:       String!
+    category_id:         Int!
+    created_at:          Time!    
+	created_by:          User! @goField(forceResolver: true)
+}
+
+#### Product Mutations #####
+extend type Mutation {
+    createProduct(product: CreateProductInput): Product!
+    updateProduct(product: UpdateProductInput): Product!
+   deleteProduct(id: Int!): Boolean!
+}
+
+#### Product Queries #####
+extend type Query {
+    products:[Product!]
+    getProductById(id:Int!): Product!
+}
+
+input CreateProductInput {
+    name_product:        String!
+    description_product: String!
+    price_product:       Float!
+    quantity_product:    Int!
+    is_available:        Boolean!
+    product_image:       String!
+    category_id:         Int!
+}
+
+input UpdateProductInput {
+    id:                  Int!
+    name_product:        String!
+    description_product: String!
+    price_product:       Float!
+    quantity_product:    Int!
+    is_available:        Boolean!
+    product_image:       String!
+    category_id:         Int!
+    created_by:          Int!
+}
+
+type PageInfo {
+  startCursor: ID!
+  endCursor:   ID!
+  hasNextPage: Boolean
+}
