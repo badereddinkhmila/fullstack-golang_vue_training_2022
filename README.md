@@ -1,2 +1,2 @@
-# fullstack-golang_vue_estale_training
+# fullstack-golang_vue_estale_initiation_training
  
